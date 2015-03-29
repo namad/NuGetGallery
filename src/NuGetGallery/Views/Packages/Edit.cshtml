@@ -173,10 +173,7 @@
 @section SideColumn {
     @{
         <nav id="edit-list">
-            <h2>Editing</h2>
-            <span class="edit-root">
-                @(Model.PackageId)
-            </span>
+            <h3>Package Versions</h3>
             <ul id="packageVersions">
                 @foreach (var version in Model.PackageVersions)
                 {
@@ -229,7 +226,7 @@
 @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "EditForm" }))
 {
     <fieldset class="form">
-        <legend>Edit @(Model.PackageId) @(Model.Version)</legend>
+        <h1 class="page-heading">Edit @(Model.PackageId) @(Model.Version)</h1>
 
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)

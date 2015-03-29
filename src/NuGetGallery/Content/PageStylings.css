@@ -1,6 +1,33 @@
 ﻿/* This CSS file is a mixed bag of 'one-off' styles that help make some page or other look the way it does, 
    but shouldn't affect the overall site appearance */
 
+/* Homepage content sections */
+.main-content:after {
+    display: block;
+    content: " ";
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+.main-content .release,
+.main-content .about,
+.main-content .notice {
+    box-sizing: border-box;
+    float: left;
+    display: inline-block;
+    padding: 0 10px;
+    vertical-align: top;
+    width: 33.3%;
+}
+
+.main-content .release {
+    padding: 0 20px 0 0;
+}
+
+.main-content .notice {
+    padding: 0 0 0 20px;
+}
+
 /* Account/Actions */
 
 #actions h1 {
@@ -76,13 +103,29 @@
         width: auto;
     }
 
+/* Social Buttons */
+#socialbuttons {
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+
+#socialbuttons div {
+    float: left;
+}
 /* Package Page (Display Package) */
 
 .package-page h3 {
-    font-size: 1.75em;
-    margin: 20px 0 6px -6px;
-    margin-bottom: 6px;
-    margin-top: 25px;
+    margin-top: 1.25em;
+}
+
+.package-page ul.owners,
+.package-page ul.tags {
+    margin-bottom: 1em;
+}
+
+.package-page .sexy-table {
+    table-layout: fixed;
+    width: 100%;
 }
 
 /* Package Page Heading (DisplayPackage) */
@@ -127,13 +170,9 @@
 .failed-edit-message,
 .prerelease-message,
 .not-latest-message {
-    -moz-border-radius: 5px 5px 5px 5px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border: 1px solid;
-    border-radius: 5px 5px 5px 5px;
     font-size: 1.5em;
-    margin: -0px 5px 20px 5px;
-    padding: 5px;
+    margin: 0 0 20px 0;
+    padding: 10px;
     text-align: center;
 }
 
@@ -228,66 +267,42 @@ button.undo-button {
 /* Featured (Home Page) */
 
 .featured {
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    background-color: rgb(246, 246, 246);
-    border: solid 1px #dedede;
-    border-radius: 3px;
     margin: 10px auto;
-    padding: 20px 10px 0 10px;
+    overflow: hidden;
 }
 
     .featured div {
         float: left;
-        margin-right: 5px;
-        width: 410px;
+        width: 440px;
+        padding-top: 10px;
     }
 
         .featured div h1 {
-            font-size: 1.85em;
-            margin-top: 0;
-            padding-top: 0;
+            font-size: 2.6em;
+            font-family: "Segoe UI Light", inherit;
         }
 
         .featured div p {
             font-size: 1.5em;
-            line-height: 1.4em;
+            line-height: 1.3em;
         }
 
             .featured div p.sub {
                 font-size: 1.4em;
                 line-height: 1.3em;
             }
-
-        .featured div a.install {
-            -moz-border-radius: 4px;
-            -webkit-border-radius: 4px;
-            background-color: #4585aa;
-            background-image: -ms-linear-gradient(top, #4585aa 0%, #376783 100%);
-            background-image: -o-linear-gradient(top, #4585aa 0%, #376783 100%);
-            background-image: -webkit-linear-gradient(top, #4585aa 0%, #376783 100%);
-            background-image: linear-gradient(top, #4585aa 0%, #376783 100%);
-            border: solid 1px #376783;
-            border-radius: 4px;
-            box-shadow: inset 0px 0px 1px rgba(255, 255, 255, 1), 1px 1px 1px rgba(0, 0, 0, 0.3);
-            color: #fff;
-            display: block;
-            font-size: 2em;
-            line-height: 2em;
-            margin-top: 25px;
-            text-align: center;
-            width: 95%;
+        .featured .btn {
+            width: 80%;
         }
 
-            .featured div a.install:hover {
-                background-color: #376783;
-                background-image: -ms-linear-gradient(top, #64a3c8 0%, #1d4760 100%);
-                background-image: -o-linear-gradient(top, #64a3c8 0%, #1d4760 100%);
-                background-image: -webkit-linear-gradient(top, #64a3c8 0%, #1d4760 100%);
-                background-image: linear-gradient(top, #64a3c8 0%, #1d4760 100%);
-                border-color: #4585aa;
-                text-decoration: none;
-            }
+        .featured .btn .icon {
+            margin-right: 10px;
+        }
+
+    .featured img {
+        float: right;
+    }
+
 
 /* Aggregate Stats (Home Page) */
 

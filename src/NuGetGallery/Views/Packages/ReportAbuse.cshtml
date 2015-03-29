@@ -56,7 +56,7 @@
                     { "style", "display: inline" },
                 })<br/>
         </div>
-        <div class="form-field">
+        <div class="form-field form-field-full">
             @Html.LabelFor(m => m.Message, "Abuse Report")
             <p>In addition to selecting the reason for reporting the package, you must provide details of the problem here.</p>
             @Html.TextAreaFor(m => m.Message, 10, 50, null)
@@ -66,7 +66,6 @@
             @Html.CheckBoxFor(m => m.CopySender)
             @Html.LabelFor(m => m.CopySender, new { @class = "checkbox" })
         </div>
-        <img src="@Url.Content("~/Content/images/required.png")" alt="Blue border on left means required." />
         @Html.SpamPreventionFields()
         <input id="form-submit" type="submit" value="Report" title="Report '@Model.PackageId' for abuse" />
     </fieldset>

@@ -20,6 +20,7 @@ html, body {
 
 body {
     color: #333;
+    background: #e4f1f7;
     font-family: "Segoe UI", "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     font-size: .85em;
 }
@@ -28,42 +29,60 @@ section {
     margin-bottom: 20px;
 }
 
+section:after {
+    display: block;
+    content: " ";
+    clear: both;
+    height: 0;
+    visibility: hidden;
+
+}
+
 /* Headings */
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
-    margin: .6em 0;
+    margin: 0.45em 0 0.35em;
 }
 
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+    margin-top: 0;
+}
 h1 {
     font-size: 2.6em;
 }
 
 section h1 {
     font-size: 2.1em;
-    margin-bottom: 2px;
 }
 
 h2 {
     font-size: 2em;
-    margin-bottom: 2px;
 }
 
 h3 {
     font-size: 1.6em;
-    margin-bottom: 0;
+    margin-bottom: 0.2em;
 }
 
 h4 {
     font-size: 1.4em;
+    margin-bottom: 0.2em;
 }
 
 h5 {
     font-size: 1.1em;
+    margin-bottom: 0.1em;
 }
 
 h6 {
     font-size: 1em;
+    margin-bottom: 0.1em;
 }
 
 
@@ -80,6 +99,7 @@ h4 img, h5 img, h6 img {
 /* Page Headings*/
 
 .page-heading {
+    font-family: "Segoe UI Light", inherit;
     border-bottom: solid 1px #ccc;
     margin: 0 0 20px 0;
     padding-bottom: 10px;
@@ -210,8 +230,8 @@ nav, section {
     background-color: #eff7fa;
     border: solid 1px;
     color: #52a4ca;
-    font-size: 1.3em;
-    padding: 10px;
+    font-size: 1.1em;
+    padding: 7px 14px 8px;
 }
 
 .error {
@@ -335,15 +355,16 @@ p.authors {
 
 .stat-number {
     font: 2em 'andale mono', 'lucida console', monospace;
-    letter-spacing: 1px;
+    letter-spacing: -1px;
     line-height: 1.4em;
     margin: 0;
 }
 
 .stat-label {
-    font-size: 1.25em;
+    font-size: 1em;
+    color: #666;
     line-height: 1em;
-    margin: -7px 0 0 5px;
+    margin: 0;
 }
 
 /* License Gadget */
@@ -612,19 +633,19 @@ ul.pager {
 
 .sexy-table {
     border-collapse: collapse;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
     /* header */
 
     .sexy-table thead tr {
-        border-bottom: solid 1px #333;
+        border-bottom: solid 1px #666;
     }
 
     .sexy-table th {
         font-size: 1.25em;
         font-weight: normal;
-        padding: 5px 15px 0px 0px;
+        padding: 5px 15px 5px 0px;
         text-align: left;
     }
 
@@ -654,10 +675,11 @@ ul.pager {
 
         .sexy-table tbody tr.recommended {
             font-weight: 800;
+            background-color: #e4f1f7;
         }
 
     .sexy-table tbody td {
-        padding: 5px 25px 5px 0;
+        padding: 5px 15px 5px 0;
     }
 
         .sexy-table tbody td.actions {
@@ -869,6 +891,7 @@ fieldset.form {
     border: none;
     clear: both;
     padding: 0;
+    margin: 0;
 }
 
     fieldset.form legend {
@@ -891,41 +914,70 @@ fieldset.form {
     .form-field label {
         color: #52a4ca;
         display: block;
-        font-size: 1.25em;
+        font-size: 1.1em;
         margin-bottom: 5px;
+    }
+    .form-field label:after {
+        content: ":";
     }
 
         .form-field label.checkbox {
             display: inline;
         }
 
+        .form-field label.checkbox:after,
+        .form-field input+label:after {
+            content: '';
+        }
+
     .form-field textarea,
+    .form-field select,
     .form-field input[type="email"],
     .form-field input[type="text"],
     .form-field input[type="file"],
     .form-field input[type="url"],
     .form-field input[type="password"] {
-        background: #fff url("../content/images/inputBackground.png") repeat-x;
-        border: solid 1px #ccc;
+        background: #fff;
+        border: solid 1px #BBB;
         color: #7f8c7d;
-        font-size: 1.25em;
-        padding: 5px 0 5px 10px;
+        font-size: 1em;
+        padding: 5px;
         vertical-align: middle;
         width: 400px;
+        height: 28px;
         /* This won't work in IE7, but it will only produce a minor layout quirk */
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
     }
 
-    .form-field.form-field-full input {
+    .form-field textarea {
+        height: auto;
+    }
+
+    .form-field textarea:focus,
+    .form-field select:focus,
+    .form-field input[type="email"]:focus,
+    .form-field input[type="text"]:focus,
+    .form-field input[type="file"]:focus,
+    .form-field input[type="url"]:focus,
+    .form-field input[type="password"]:focus {
+        border-color: #52a4ca;
+        outline: 0 none;
+    }
+
+    .form-field-full input,
+    .form-field-full textarea,
+    .form-field-full select {
         width: 100%;
     }
 
+    /* do we need this? seems all form fields are required 
     .form-field input[data-val-required],
     .form-field textarea[data-val-required] {
         border-left: solid 5px #52a4ca;
     }
+    */
 
     .form-field input[data-edited=true],
     .form-field textarea[data-edited=true] {
@@ -942,10 +994,7 @@ fieldset.form {
     }
 
     .form-field select {
-        color: #7f8c7d;
-        font-size: 1.25em;
-        padding: 2px;
-        margin: 0px 0px 10px 0;
+        font-size: 1em;
     }
 
         .form-field select[data-edited=true] {
@@ -953,24 +1002,8 @@ fieldset.form {
             padding-left: 0px;
         }
 
-    .form-field textarea[disabled],
-    .form-field input[type="email"][disabled],
-    .form-field input[type="text"][disabled],
-    .form-field input[type="file"][disabled],
-    .form-field input[type="password"][disabled],
-    .form input[type="submit"][disabled],
-    .form input[type="submit"][disabled]:hover {
-        background: silver;
-        cursor: not-allowed;
-        border: none;
-        opacity: 0.65;
-        filter: alpha(opacity=65);
-        color: #333;
-        background-color: #e6e6e6;
-    }
-
     .form-field select[data-edited=true] {
-        border-left: solid 4px #2ef12e;
+        border-color: #2ef12e;
         padding-left: 0px;
     }
 
@@ -984,25 +1017,22 @@ fieldset.form {
         background: silver;
         cursor: not-allowed;
         border: none;
-        opacity: 0.65;
-        filter: alpha(opacity=65);
+        opacity: 0.5;
+        filter: alpha(opacity=5);
         color: #333;
         background-color: #e6e6e6;
     }
 
     .form-field input.input-validation-error,
     .form-field textarea.input-validation-error {
-        border-left: solid 5px #ca5252;
+        border-color: #ca5252;
     }
 
 /* flyout Text */
 
 .field-hint-message,
 .field-validation-error {
-    font-size: 1em;
-    line-height: 1.2em;
-    padding: 5px;
-    margin-top: 5px;
+    font-size: 0.9em;
     width: 416px;
     z-index: 550;
 }
@@ -1021,15 +1051,23 @@ textarea + .field-validation-error {
 }
 
 .field-hint-message {
-    background-color: #eff7fa;
-    border: solid 1px #52a4ca;
     display: none;
 }
 
+.field-hint-message:before {
+    font-family: FontAwesome;
+    content: '\f05a';
+    margin-right: 5px;
+}
+
 .field-validation-error {
-    background-color: #fbe3e4;
-    border: solid 1px #c13a3f;
     display: block;
+}
+
+.field-validation-error:before {
+    font-family: FontAwesome;
+    content: '\f06a';
+    margin-right: 5px;
 }
 
 .form-field input:focus ~ .field-hint-message {
@@ -1040,56 +1078,45 @@ input:focus ~ .field-validation-error ~ .field-hint-message {
     display: none;
 }
 
-a.btn {
-    color: white;
-    text-decoration: none;
-    padding: 1px 6px;
-    margin: 0px 6px;
-    display: block;
-    /* This won't work in IE7, but it will only produce a minor layout quirk */
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.btn.btn-small {
-    font-size: 10pt;
-}
-
-.btn.btn-inline {
-    display: inline-block;
-}
-
-a:hover.btn {
-    color: white;
-    text-decoration: none;
+input:focus ~ .field-validation-error {
+    display: none;
 }
 
 button, input[type="submit"], .btn {
-    font-family: "Segoe UI", "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
-    background-color: #4585aa;
-    background-image: -ms-linear-gradient(top, #4585aa 0%, #376783 100%);
-    background-image: -o-linear-gradient(top, #4585aa 0%, #376783 100%);
-    background-image: -webkit-linear-gradient(top, #4585aa 0%, #376783 100%);
-    background-image: linear-gradient(top, #4585aa 0%, #376783 100%);
-    border: solid 1px #376783;
-    box-shadow: inset 0px 0px 1px rgba(255, 255, 255, 1), 1px 1px 1px rgba(0, 0, 0, 0.3);
+    background: #1d769f;
+    border: 0 none;
+    box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    font-size: 1.25em;
-    font-weight: 500;
+    display: inline-block;
+    font-family: "Segoe UI", "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     margin: 0;
+    height: 28px;
+    text-align: center;
     text-decoration: none;
+    padding: 4px 15px 6px;
     width: auto;
 }
 
-    input[type="submit"]:hover, .btn:hover {
+    .btn-small {
+        font-size: 10pt;
+    }
+
+    .btn-inline {
+        display: inline-block;
+    }
+
+    .btn-big {
+        width: 100%;
+        font-size: 1.75em;
+        padding: 8px 20px 10px;
+        height: 50px;
+    }
+
+    button:hover, input[type="submit"]:hover, .btn:hover,
+    button:focus, input[type="submit"]:focus, .btn:focus {
         background-color: #307A25;
-        background-image: -ms-linear-gradient(top, #307A25 0%, #2C9E1B 100%);
-        background-image: -o-linear-gradient(top, #307A25 0%, #2C9E1B 100%);
-        background-image: -webkit-linear-gradient(top, #307A25 0%, #2C9E1B 100%);
-        background-image: linear-gradient(top, #307A25 0%, #2C9E1B 100%);
-        border-color: #307A25;
+        text-decoration: none;
     }
 
 .form a.cancel {
@@ -1097,8 +1124,7 @@ button, input[type="submit"], .btn {
 }
 
 .form input:focus {
-    outline: none;
-}
+    }
 
 .form img {
     display: block;
@@ -1145,48 +1171,73 @@ button, input[type="submit"], .btn {
 /* Sequence Steps */
 
 .sequence {
-    letter-spacing: 1px;
+    letter-spacing: 0px;
     list-style-position: inside;
-    margin: 0;
-    padding: 0;
+    margin: 0 0 20px 0; padding: 0;
+    overflow: hidden;
 }
 
     .sequence li {
-        border: solid 1px #333;
-        box-shadow: inset 0px 0px 1px rgba(255, 255, 255, 1), 1px 1px 1px rgba(0, 0, 0, 0.3);
-        color: #333;
         float: left;
-        height: 35px;
-        line-height: 35px;
-        margin: 0 30px 20px 0;
-        padding: 0 20px;
-        width: auto;
+        position: relative;
+        margin: 0;
+        border: 0 none;
+        height: 36px;
+        line-height: 36px;  
+        background: #dfe4e8;
+        box-shadow: none;
+        padding: 0 10px 0 32px;
     }
 
-        .sequence li.past,
-        .sequence li.current {
-            background-color: #4585aa;
-            background-image: -ms-linear-gradient(top, #4585aa 0%, #376783 100%);
-            background-image: -o-linear-gradient(top, #4585aa 0%, #376783 100%);
-            background-image: -webkit-linear-gradient(top, #4585aa 0%, #376783 100%);
-            background-image: linear-gradient(top, #4585aa 0%, #376783 100%);
-            border-color: #376783;
-            color: #fff;
-        }
+    .sequence li:first-child {
+        padding-left: 20px;
+    }
 
-        .sequence li.current {
-            font-weight: 600;
-            height: 41px;
-            line-height: 41px;
-            margin-top: -3px;
-            text-decoration: underline;
-        }
+    .sequence li:after {
+        content: '';
+        display: block;
+        position: absolute;
+        border: 18px solid black;
+        border-color: transparent transparent transparent #dfe4e8;
+        left: 100%;
+        top: 0;
+    }
 
-.btn.btn-big {
-    width: 100%;
-    font-size: 23px;
-    padding: 0.25em;
-}
+    .sequence li.past,
+    .sequence li.current {
+        border: 0 none;
+        background: #1d769f;
+        height: 36px;
+        line-height: 36px;
+        margin-top: 0;
+        box-shadow: none;
+        text-decoration: none;
+        color: #FFF;
+    }
+
+    .sequence li.past {
+        background-color: #4ca7d0;
+    }
+
+    .sequence li.current + li:before {
+        content: '';
+        display: block;
+        position: absolute;
+        border: 18px solid black;
+        border-color: transparent transparent transparent #1d769f;
+        left: 0;
+        top: 0;
+    }
+
+    .sequence li.past + li:before {
+        content: '';
+        display: block;
+        position: absolute;
+        border: 18px solid black;   
+        border-color: transparent transparent transparent #4ca7d0!important;
+        left: 0;
+        top: 0; 
+    }
 
 .verticalSeparator {
     display: inline-block;
@@ -1200,33 +1251,45 @@ button, input[type="submit"], .btn {
 }
 
 ul.actionlist {
-    margin: 0;
-    padding: 5px;
+    margin: 0 0 0 -10px;
     padding-left: 0;
-    width: 100%;
+    display: block;
+}
+ul.actionlist:after {
+    display: block;
+    content: " ";
+    clear: both;
+    height: 0;
+    visibility: hidden;
 }
 
     ul.actionlist li.actionlist-item {
         margin: 0;
-        margin-left: 5px;
+        margin-left: 10px;
         list-style-type: none;
-        width: 472px;
+        width: 475px;
         float: left;
     }
 
         ul.actionlist li.actionlist-item a.actionlist-item-link {
-            background-color: #eff7fa;
-            border: 1px solid silver;
-            box-shadow: inset 0px 0px 1px rgba(255, 255, 255, 1), 1px 1px 1px rgba(0, 0, 0, 0.3);
-            padding: 0.5em;
+            background-color: #e4f1f7;
+            padding: 15px 15px 15px 80px;
             color: black;
             float: left;
             height: 120px;
+        }        
+
+        ul.actionlist li.actionlist-item a.actionlist-item-link:hover {
+            background-color: #307A25;
+            color: white;
         }
 
-            ul.actionlist li.actionlist-item a.actionlist-item-link:hover {
-                background-color: white;
-            }
+            ul.actionlist li.actionlist-item .actionlist-item-header-icon {
+                float: left;
+                font-size: 3.5em;
+                margin-left: -65px;
+            }            
+
 
             ul.actionlist li.actionlist-item a.actionlist-item-link .actionlist-item-header {
                 font-size: 1.5em;
@@ -1234,6 +1297,9 @@ ul.actionlist {
 
             ul.actionlist li.actionlist-item a.actionlist-item-link .actionlist-item-header {
                 color: #0071bc;
+            }
+            ul.actionlist li.actionlist-item a.actionlist-item-link:hover .actionlist-item-header {
+                color: white;
             }
 
             ul.actionlist li.actionlist-item a.actionlist-item-link:hover .actionlist-item-header .actionlist-item-header-text {
@@ -1245,52 +1311,64 @@ ul.actionlist {
             }
 
 ul.accordian {
-    margin: 0;
-    padding: 5px;
+    margin: 0 0 20px 0;
+    padding: 0;
+    list-style: none;
 }
 
     ul.accordian li.accordian-item {
-        background-color: #eff7fa;
-        margin: 0.5em 0;
-        padding: 0.5em;
-        list-style-type: none;
-        border: 1px solid silver;
-        box-shadow: inset 0px 0px 1px rgba(255, 255, 255, 1), 1px 1px 1px rgba(0, 0, 0, 0.3);
-        min-height: 32px;
+        margin: -1px 0;
+        padding: 10px;
+        border: 1px solid #DDD;
+        border-width: 1px 0;
+        min-height: 28px;
+    }
+    ul.accordian li.accordian-item:hover {
+        background-color: #e4f1f7;
+        border-color: #ccc;
+        position: relative;
     }
 
         ul.accordian li.accordian-item .accordian-item-actions {
             float: right;
-            margin-top: 3px;
+        }
+        ul.accordian li.accordian-item .form-inline {
+            vertical-align: top;
         }
 
         ul.accordian li.accordian-item .accordian-item-title {
-            font-size: 16pt;
-            margin-bottom: 1em;
+            color: #666;
+            font-size: 1.4em;
+            vertical-align: middle;
         }
 
         ul.accordian li.accordian-item .accordian-item-subtitle {
-            font-size: 12pt;
             margin-left: 1em;
+            font-size: 1.4em;
+            vertical-align: middle;
         }
 
             ul.accordian li.accordian-item .accordian-item-subtitle .owner-image {
-                margin-bottom: -8px;
+                margin: -6px 0;
+                height: 28px;
+                width: 28px;
             }
 
         ul.accordian li.accordian-item .accordian-item-content {
-            padding-top: 1em;
+            padding: 10px 0;
         }
 
         ul.accordian li.accordian-item .accordian-expand-link {
             display: inline-block;
-            margin-top: 0.25em;
+            line-height: 28px;
+            margin-right: 15px;
+        }
+        ul.accordian li.accordian-item .accordian-expand-link:last-child {
+            margin-right: 0;
         }
 
         ul.accordian li.accordian-item.accordian-item-disabled {
-            background-color: white;
-            border: 1px dashed silver;
-            box-shadow: none;
+            background-color: #efefef;
         }
 
             ul.accordian li.accordian-item.accordian-item-disabled .accordian-item-title, li.accordian-item-disabled .accordian-item-subtitle {
